@@ -5,27 +5,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Delta University Learning Management System | DULMS</title>
     
-    <!-- تحميل مكتبات التصميم الأصلية لنظام DULMS مع روابط بديلة لضمان الاستقرار -->
+    <!-- تحميل مكتبة التنسيق الحديثة Tailwind لضمان التجاوب الكامل واستقرار العناصر -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- تحميل مكتبات التصميم الأصلية لنظام DULMS للرموز والأيقونات -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css" rel="stylesheet">
     
-    <!-- الأنماط المخصصة المدمجة لضمان التوافق بين نظام تسجيل الدخول الحديث وبوابة DULMS الكلاسيكية -->
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap');
         
-        /* تطبيق خط القاهرة ليتناسب مع الواجهتين العربية والانجليزية بشكل عصري */
+        /* تطبيق خط القاهرة ليتناسب مع الواجهات بشكل متناسق واحترافي */
         body, html, .app, input, button, span, p, h1, h2, h3, h4, h5, h6, .btn, .nav, .aside {
             font-family: 'Cairo', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
         }
 
-        /* حركات التمرير وشريط التقدم */
+        /* حركات التمرير وشريط التقدم البرتقالي الخاص بالجامعة */
         @keyframes progress {
-            0% { width: 10%; }
+            0% { width: 26%; }
             50% { width: 85%; }
             100% { width: 100%; }
         }
         .animated-bar {
-            animation: progress 3s ease-in-out infinite;
+            animation: progress 4s ease-in-out infinite;
+        }
+
+        /* تخصيص مظهر صفحة تسجيل الدخول الكلاسيكية المطابقة للتصميم الأصلي */
+        .delta-header {
+            background-color: #ffffff;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 30px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        .spliter {
+            height: 5px;
+            width: 100%;
+            display: flex;
         }
 
         /* أنماط مخصصة لبوابة الطلاب الكلاسيكية المتوافقة مع الكود المرفق */
@@ -86,18 +105,13 @@
             border-color: #f0f2f5;
         }
         
-        /* شاشات الحظر والقفل المضافة */
+        /* شاشات القفل المعززة */
         .announcement-lock, .session-relogin, .lock-modal {
             background-color: rgba(15, 23, 42, 0.75) !important;
             backdrop-filter: blur(4px);
         }
 
-        /* تعديلات مظهر التخصيص لـ Tailwind على صفحة تسجيل الدخول */
-        .modern-login {
-            background: radial-gradient(circle at top right, #f8fafc, #e2e8f0);
-        }
-        
-        /* شريط التحميل الدائري */
+        /* شريط التحميل الدائري داخل لوحة التحكم */
         .easy-pie-container {
             position: relative;
             display: inline-block;
@@ -111,31 +125,44 @@
 </head>
 <body class="bg-slate-50 min-h-screen flex flex-col justify-between text-slate-800" style="margin:0; padding:0; overflow-x:hidden;">
 
-    <!-- ==================== أولاً: واجهة تسجيل الدخول الحديثة ==================== -->
-    <div id="login-screen" class="modern-login min-h-screen flex flex-col justify-between">
-        <!-- شريط التحميل العلوي التفاعلي -->
-        <div class="w-full h-1.5 bg-blue-600 flex">
-            <div id="orange-bar" class="bg-orange-500 h-full animated-bar" style="width: 30%;"></div>
+    <!-- ==================== STREAMING_CHUNK: Rendering Login Screen... ==================== -->
+    <div id="login-screen" class="min-h-screen flex flex-col justify-between bg-slate-50">
+        
+        <!-- الهيدر العلوي الأصلي الخاص بـ Delta Portal -->
+        <header class="delta-header">
+            <div class="flex items-center gap-3">
+                <!-- شعار تعبيري لجامعة دلتا مدمج بجودة عالية -->
+                <div class="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center text-white text-xl font-bold shadow-md">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                </div>
+                <div class="text-right">
+                    <span class="block font-bold text-slate-800 text-lg leading-tight">DULMS</span>
+                    <span class="text-[10px] text-slate-400 block">Delta University Learning Management System</span>
+                </div>
+            </div>
+            <div class="text-slate-400 text-xs hidden sm:block">بوابة الخدمات الأكاديمية الموحدة</div>
+        </header>
+
+        <!-- شريط التقدم البرتقالي والأزرق المميز للجامعة -->
+        <div class="spliter">
+            <div id="orange" class="bg-orange-500 h-full animated-bar" style="width: 26%;"></div>
+            <div class="bg-blue-600 flex-grow h-full"></div>
         </div>
 
-        <main class="flex-grow flex items-center justify-center p-4">
+        <main class="flex-grow flex items-center justify-center p-4 my-6">
             <div class="bg-white shadow-2xl rounded-2xl max-w-md w-full p-8 border border-slate-100 transition-all duration-300">
                 
-                <!-- الشعار التوضيحي -->
                 <div class="text-center mb-6">
-                    <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-blue-50 text-blue-600 mb-3">
-                        <i class="fa-solid fa-graduation-cap text-3xl text-blue-600"></i>
-                    </div>
-                    <h1 class="text-2xl font-bold text-slate-800">بوابة جامعة دلتا التعليمية</h1>
-                    <p class="text-slate-400 text-sm mt-1">Delta University Learning Management System</p>
+                    <h2 class="text-xl font-bold text-slate-800">تسجيل الدخول إلى النظام</h2>
+                    <p class="text-slate-400 text-xs mt-1">الرجاء إدخال اسم المستخدم وكلمة المرور الخاصة بك</p>
                 </div>
 
-                <!-- نموذج تسجيل الدخول -->
+                <!-- نموذج تسجيل الدخول المطابق للبيانات المطلوبة -->
                 <form id="loginForm" class="space-y-4" onsubmit="handleLogin(event)">
                     
                     <!-- حقل اسم المستخدم (ID) -->
                     <div>
-                        <label class="block text-slate-600 text-sm font-semibold mb-2 text-right" for="txtname">
+                        <label class="block text-slate-600 text-xs font-semibold mb-2 text-right" for="txtname">
                             <i class="fa-solid fa-user text-blue-500 ml-1"></i> اسم المستخدم (ID)
                         </label>
                         <input 
@@ -143,30 +170,30 @@
                             id="txtname" 
                             required
                             placeholder="أدخل الـ ID الخاص بك (مثال: 122510034)" 
-                            class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition text-left tracking-wider"
+                            class="w-full px-4 py-2.5 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition text-left tracking-wider text-sm"
                         >
                     </div>
 
-                    <!-- خيارات نوع المستخدم -->
+                    <!-- خيارات نوع المستخدم التفاعلية -->
                     <div>
-                        <span class="block text-slate-600 text-sm font-semibold mb-2 text-right">
+                        <span class="block text-slate-600 text-xs font-semibold mb-2 text-right">
                             <i class="fa-solid fa-users-gear text-blue-500 ml-1"></i> نوع المستخدم
                         </span>
                         <div class="grid grid-cols-2 gap-2 text-xs">
-                            <label class="flex items-center p-2.5 rounded-lg border border-slate-200 hover:bg-slate-50 cursor-pointer transition">
-                                <input type="radio" name="userType" value="1" checked class="ml-1 text-blue-600 focus:ring-blue-500">
+                            <label class="flex items-center p-2.5 rounded-xl border border-slate-100 hover:bg-slate-50 cursor-pointer transition">
+                                <input type="radio" name="userType" value="1" checked class="ml-2 text-blue-600 focus:ring-blue-500">
                                 <span class="text-slate-700">طالب (Student)</span>
                             </label>
-                            <label class="flex items-center p-2.5 rounded-lg border border-slate-200 hover:bg-slate-50 cursor-pointer transition">
-                                <input type="radio" name="userType" value="6" class="ml-1 text-blue-600 focus:ring-blue-500">
+                            <label class="flex items-center p-2.5 rounded-xl border border-slate-100 hover:bg-slate-50 cursor-pointer transition">
+                                <input type="radio" name="userType" value="6" class="ml-2 text-blue-600 focus:ring-blue-500">
                                 <span class="text-slate-700">خريج (Graduate)</span>
                             </label>
-                            <label id="parent-option" class="flex items-center p-2.5 rounded-lg border border-slate-200 hover:bg-slate-50 cursor-pointer transition">
-                                <input type="radio" name="userType" value="3" class="ml-1 text-blue-600 focus:ring-blue-500">
+                            <label id="parent-option" class="flex items-center p-2.5 rounded-xl border border-slate-100 hover:bg-slate-50 cursor-pointer transition">
+                                <input type="radio" name="userType" value="3" class="ml-2 text-blue-600 focus:ring-blue-500">
                                 <span class="text-slate-700">ولي أمر (Parent)</span>
                             </label>
-                            <label class="flex items-center p-2.5 rounded-lg border border-slate-200 hover:bg-slate-50 cursor-pointer transition">
-                                <input type="radio" name="userType" value="2" class="ml-1 text-blue-600 focus:ring-blue-500">
+                            <label class="flex items-center p-2.5 rounded-xl border border-slate-100 hover:bg-slate-50 cursor-pointer transition">
+                                <input type="radio" name="userType" value="2" class="ml-2 text-blue-600 focus:ring-blue-500">
                                 <span class="text-slate-700">موظف (Staff)</span>
                             </label>
                         </div>
@@ -174,7 +201,7 @@
 
                     <!-- حقل كلمة المرور -->
                     <div>
-                        <label class="block text-slate-600 text-sm font-semibold mb-2 text-right" for="txtPass">
+                        <label class="block text-slate-600 text-xs font-semibold mb-2 text-right" for="txtPass">
                             <i class="fa-solid fa-lock text-blue-500 ml-1"></i> كلمة المرور (Password)
                         </label>
                         <div class="relative">
@@ -183,7 +210,7 @@
                                 id="txtPass" 
                                 required
                                 placeholder="أدخل كلمة المرور" 
-                                class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition text-left tracking-wider"
+                                class="w-full px-4 py-2.5 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition text-left tracking-wider text-sm"
                             >
                             <button type="button" onclick="togglePasswordVisibility()" class="absolute inset-y-0 left-0 pl-3 flex items-center text-slate-400 hover:text-slate-600" style="background: none; border: none;">
                                 <i id="eye-icon" class="fa-solid fa-eye"></i>
@@ -196,16 +223,16 @@
                         <a href="#" class="text-xs text-blue-600 hover:underline">هل نسيت كلمة المرور؟</a>
                     </div>
 
-                    <!-- رسالة الخطأ التفاعلية -->
+                    <!-- رسالة الخطأ التفاعلية عند إدخال بيانات خاطئة -->
                     <div id="errorMessage" class="hidden p-3 rounded-lg bg-red-50 border border-red-200 text-red-600 text-xs flex items-center gap-2">
                         <i class="fa-solid fa-circle-exclamation text-base"></i>
-                        <span id="errorText">بيانات الدخول المدخلة غير صحيحة!</span>
+                        <span id="errorText">بيانات الدخول المدخلة غير صحيحة! يرجى التحقق وإعادة المحاولة.</span>
                     </div>
 
-                    <!-- زر تسجيل الدخول -->
+                    <!-- زر تسجيل الدخول المطور -->
                     <button 
                         type="submit" 
-                        class="w-full py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-xl shadow-lg shadow-blue-500/20 transition-all duration-200 flex items-center justify-center gap-2"
+                        class="w-full py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-xl shadow-lg shadow-blue-500/20 transition-all duration-200 flex items-center justify-center gap-2 text-sm"
                         style="border: none;"
                     >
                         <span>تسجيل الدخول</span>
@@ -215,13 +242,19 @@
             </div>
         </main>
 
-        <footer class="bg-slate-900 text-slate-500 py-4 px-4 text-center text-xs border-t border-slate-800">
+        <footer class="bg-slate-900 text-slate-500 py-6 px-4 text-center text-xs border-t border-slate-800 space-y-3">
             <p>Powered by Delta University, All Rights Reserved ©2026.</p>
+            <div class="flex justify-center gap-4 text-sm">
+                <a href="https://www.facebook.com/deltauniv/" target="_blank" class="hover:text-blue-500 transition"><i class="fa-brands fa-facebook"></i></a>
+                <a href="https://www.instagram.com/DELTAUNIVERSITY/" target="_blank" class="hover:text-pink-500 transition"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://www.youtube.com/channel/UCdfAEzXKJeTswIHskjFu55A" target="_blank" class="hover:text-red-500 transition"><i class="fa-brands fa-youtube"></i></a>
+                <a href="https://wa.me/201281101599" target="_blank" class="hover:text-green-500 transition"><i class="fa-brands fa-whatsapp"></i></a>
+            </div>
         </footer>
     </div>
 
 
-    <!-- ==================== ثانياً: شاشة بوابة الطلاب الكاملة المدمجة (DULMS) ==================== -->
+    <!-- ==================== STREAMING_CHUNK: Designing DULMS Student Portal Screen... ==================== -->
     <div id="dulms-portal" class="hidden min-h-screen flex flex-col justify-between bg-slate-100 w-full" style="direction: ltr !important;">
         
         <!-- شريط الرأس العلوي (DULMS Header) -->
@@ -237,21 +270,22 @@
             <input type="hidden" id="LoginId" value="122510034" />
             <input type="hidden" id="LoginType" value="1" />
 
+            <!-- أيقونات الهيدر العلوية للتنبيهات السريعة -->
             <ul class="nav navbar-nav navbar-right hidden-xs nav-user" style="display: flex; flex-direction: row; align-items: center; gap: 15px; margin: 0; padding-right: 15px; list-style: none;">
                 <li>
-                    <a class="dk notifications c-p" onclick="showTabContent('messages')" style="color: #bcc3cb; padding: 15px 10px; position: relative; display: block;">
+                    <a class="dk notifications c-p" onclick="switchPortalTab('messages')" style="color: #bcc3cb; padding: 15px 10px; position: relative; display: block;">
                         <i class="fa fa-bullhorn"></i>
                         <span class="badge badge-sm up bg-danger Anncount" style="position: absolute; top: 8px; right: 2px; font-size: 9px; padding: 2px 4px;">1</span>
                     </a>
                 </li>
                 <li>
-                    <a class="dk messages c-p" onclick="showTabContent('messages')" style="color: #bcc3cb; padding: 15px 10px; position: relative; display: block;">
+                    <a class="dk messages c-p" onclick="switchPortalTab('messages')" style="color: #bcc3cb; padding: 15px 10px; position: relative; display: block;">
                         <i class="fa fa-comments"></i>
                         <span class="badge badge-sm up bg-warning Msgcount" style="position: absolute; top: 8px; right: 2px; font-size: 9px; padding: 2px 4px;">2</span>
                     </a>
                 </li>
                 <li>
-                    <a class="dk notifications c-p" onclick="showTabContent('notifications')" style="color: #bcc3cb; padding: 15px 10px; position: relative; display: block;">
+                    <a class="dk notifications c-p" onclick="switchPortalTab('notifications')" style="color: #bcc3cb; padding: 15px 10px; position: relative; display: block;">
                         <i class="fa fa-bell"></i>
                         <span class="badge badge-sm up bg-danger Notcount" style="position: absolute; top: 8px; right: 2px; font-size: 9px; padding: 2px 4px;">2</span>
                     </a>
@@ -265,11 +299,11 @@
                         <b class="caret"></b>
                     </a>
                     <ul id="user-dropdown-menu" class="dropdown-menu animated fadeInRight m-r-sm hidden" style="width:220px; position: absolute; right: 0; top: 55px; left: auto; background: #fff; box-shadow: 0 4px 12px rgba(0,0,0,0.15); border-radius: 8px; border: 1px solid #e2e8f0; list-style: none; padding: 8px 0;">
-                        <li style="padding: 6px 15px; font-size: 11px; color:#94a3b8;">إعدادات الطالب</li>
+                        <li style="padding: 6px 15px; font-size: 11px; color:#94a3b8;">Student Settings</li>
                         <li><a class="c-p" onclick="showPersonalSettings()" style="display: flex; align-items: center; gap: 8px; padding: 8px 15px; color:#334155; text-decoration:none;"><i class="fa fa-gear text-slate-400"></i>Account Settings</a></li>
                         <li class="divider" style="height:1px; background:#e2e8f0; margin: 6px 0;"></li>
-                        <li><a class="c-p" onclick="showTabContent('Events')" style="display: flex; align-items: center; gap: 8px; padding: 8px 15px; color:#334155; text-decoration:none;"><i class="fa fa-calendar text-slate-400"></i>Events Calendar</a></li>
-                        <li><a class="c-p" onclick="showTabContent('notifications')" style="display: flex; align-items: center; gap: 8px; padding: 8px 15px; color:#334155; text-decoration:none;"><i class="fa fa-bell text-slate-400"></i>Notifications</a></li>
+                        <li><a class="c-p" onclick="switchPortalTab('Events')" style="display: flex; align-items: center; gap: 8px; padding: 8px 15px; color:#334155; text-decoration:none;"><i class="fa fa-calendar text-slate-400"></i>Events Calendar</a></li>
+                        <li><a class="c-p" onclick="switchPortalTab('notifications')" style="display: flex; align-items: center; gap: 8px; padding: 8px 15px; color:#334155; text-decoration:none;"><i class="fa fa-bell text-slate-400"></i>Notifications</a></li>
                         <li class="divider" style="height:1px; background:#e2e8f0; margin: 6px 0;"></li>
                         <li><a class="c-p" onclick="triggerLockScreen()" style="display: flex; align-items: center; gap: 8px; padding: 8px 15px; color:#334155; text-decoration:none;"><i class="fa fa-lock text-slate-400"></i>Lock Screen</a></li>
                         <li><a class="c-p" onclick="handleLogout()" style="display: flex; align-items: center; gap: 8px; padding: 8px 15px; color:#ef4444; text-decoration:none;"><i class="fa-solid fa-sign-out text-red-500"></i>Log out</a></li>
@@ -278,7 +312,6 @@
             </ul>
         </header>
 
-        <!-- المحتوى الداخلي المقسم (HBox Stretch) -->
         <section class="b-t" style="flex-grow: 1; display: flex; overflow: hidden; min-height: calc(100vh - 120px);">
             <div class="hbox stretch" style="width: 100%; display: flex; flex-direction: row;">
                 
@@ -303,12 +336,11 @@
                             </table>
                         </header>
 
-                        <!-- جسم القائمة الجانبية للتنقل (Nav Primary) -->
                         <section class="w-f scrollable" style="flex-grow: 1; overflow-y: auto; padding: 10px 0;">
                             <nav class="nav-primary">
                                 <ul class="nav side-menu" style="list-style: none; padding: 0; margin: 0;">
                                     <li class="active" style="border-left: 4px solid #f0a602;">
-                                        <a onclick="showTabContent('Files')" class="c-p" style="display: flex; align-items: center; gap: 12px; padding: 12px 20px; color: #ffffff; text-decoration: none; font-size: 14px; background-color: #243342;">
+                                        <a onclick="switchPortalTab('Files')" class="c-p" style="display: flex; align-items: center; gap: 12px; padding: 12px 20px; color: #ffffff; text-decoration: none; font-size: 14px; background-color: #243342;">
                                             <i class="fa fa-home icon text-warning" style="width: 20px;"></i>
                                             <span>Home Dashboard</span>
                                         </a>
@@ -329,7 +361,7 @@
                                         </ul>
                                     </li>
 
-                                    <!-- قسم وثائق الطلاب -->
+                                    <!-- قسم طلبات المستندات -->
                                     <li class="last">
                                         <a onclick="toggleAsideSubmenu(this)" class="c-p" style="display: flex; align-items: center; justify-content: space-between; padding: 12px 20px; color: #bcc3cb; text-decoration: none; font-size: 14px;">
                                             <span style="display: flex; align-items: center; gap: 12px;">
@@ -357,21 +389,6 @@
                                             <li><a class="c-p" onclick="showSystemDevelopmentAlert()"><i class="fa fa-angle-right"></i> Exams Schedule</a></li>
                                             <li><a class="c-p" onclick="showSystemDevelopmentAlert()"><i class="fa fa-angle-right"></i> Final Result</a></li>
                                             <li><a class="c-p" onclick="showSystemDevelopmentAlert()"><i class="fa fa-angle-right"></i> Grades Book</a></li>
-                                        </ul>
-                                    </li>
-
-                                    <!-- قسم الشؤون المالية -->
-                                    <li class="last">
-                                        <a onclick="toggleAsideSubmenu(this)" class="c-p" style="display: flex; align-items: center; justify-content: space-between; padding: 12px 20px; color: #bcc3cb; text-decoration: none; font-size: 14px;">
-                                            <span style="display: flex; align-items: center; gap: 12px;">
-                                                <i class="fa fa-credit-card icon text-warning" style="width: 20px;"></i>
-                                                <span>Financial Services</span>
-                                            </span>
-                                            <i class="fa fa-angle-down text"></i>
-                                        </a>
-                                        <ul class="nav lt">
-                                            <li><a class="c-p" onclick="showSystemDevelopmentAlert()"><i class="fa fa-angle-right"></i> Payment Permissions</a></li>
-                                            <li><a class="c-p" onclick="showSystemDevelopmentAlert()"><i class="fa fa-angle-right"></i> Balance Statement</a></li>
                                         </ul>
                                     </li>
                                 </ul>
@@ -446,7 +463,7 @@
                                                     <i class="fa-solid fa-file-pdf"></i>
                                                 </div>
                                                 <div class="flex-grow">
-                                                    <h4 class="font-bold text-slate-800 mb-1 c-p hover:text-blue-600" onclick="simulateFileDownload('Artificial Intelligence Syllabus.pdf')">Artificial Intelligence Syllabus.pdf</h4>
+                                                    <h4 class="font-bold text-slate-800 text-sm mb-1 c-p hover:text-blue-600" onclick="simulateFileDownload('Artificial Intelligence Syllabus.pdf')">Artificial Intelligence Syllabus.pdf</h4>
                                                     <p class="text-slate-400 text-xs">Course structure, objectives, and grading scheme for Fall semester.</p>
                                                 </div>
                                             </div>
@@ -455,7 +472,7 @@
                                                     <i class="fa-solid fa-file-word"></i>
                                                 </div>
                                                 <div class="flex-grow">
-                                                    <h4 class="font-bold text-slate-800 mb-1 c-p hover:text-blue-600" onclick="simulateFileDownload('Graduation Project Proposal Guidelines.docx')">Graduation Project Proposal Guidelines.docx</h4>
+                                                    <h4 class="font-bold text-slate-800 text-sm mb-1 c-p hover:text-blue-600" onclick="simulateFileDownload('Graduation Project Proposal Guidelines.docx')">Graduation Project Proposal Guidelines.docx</h4>
                                                     <p class="text-slate-400 text-xs">Detailed document outline for submiting project abstracts.</p>
                                                 </div>
                                             </div>
@@ -481,16 +498,6 @@
                                                     <h5 class="font-bold text-slate-800 mb-1">جدول امتحانات منتصف الفصل الدراسي الثاني</h5>
                                                     <p class="text-slate-500 text-xs">تم إعتماد ونشر جدول الميدتيرم بقسم شؤون الطلاب، برجاء المراجعة.</p>
                                                     <span class="text-slate-400 text-[10px] mt-2 block">1 hour ago</span>
-                                                </div>
-                                            </div>
-                                            <div class="flex items-start gap-4 p-4 rounded-xl bg-orange-50/50 border border-orange-100">
-                                                <div class="w-8 h-8 rounded-full bg-orange-100 text-orange-600 flex items-center justify-center flex-shrink-0 mt-1">
-                                                    <i class="fa-solid fa-triangle-exclamation"></i>
-                                                </div>
-                                                <div>
-                                                    <h5 class="font-bold text-slate-800 mb-1">تنبيه الغياب رقم (1)</h5>
-                                                    <p class="text-slate-500 text-xs">تجاوزت نسبة الغياب المسموح بها لمادة معمارية الحاسب.</p>
-                                                    <span class="text-slate-400 text-[10px] mt-2 block">Yesterday</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -565,12 +572,11 @@
                                 </div>
                             </div>
 
-                            <!-- رسم بياني دائري تفاعلي لمتبقي ساعات التخرج -->
+                            <!-- رسم بياني دائري لمتبقي ساعات التخرج -->
                             <div class="bg-white rounded-2xl shadow-sm p-6 border border-slate-100 text-center">
                                 <h4 class="font-bold text-slate-800 text-sm mb-4">Graduation Requirements Progress</h4>
                                 
                                 <div class="easy-pie-container mx-auto">
-                                    <!-- رسم دائري باستخدام SVG مباشر عالي الدقة وذكي تفاعلي -->
                                     <svg class="easy-pie-svg" width="160" height="160">
                                         <circle cx="80" cy="80" r="70" stroke="#f1f5f9" stroke-width="10" fill="transparent" />
                                         <circle cx="80" cy="80" r="70" stroke="#2563eb" stroke-width="10" fill="transparent" 
@@ -592,17 +598,11 @@
         <!-- الفوتر العام لبوابة دلتا -->
         <footer class="bg-slate-900 text-slate-400 py-6 px-4 border-t border-slate-800 text-center text-xs space-y-4">
             <p class="font-medium">جميع الحقوق محفوظة وبوابة الخدمات الموحدة © 2026 للبوابة الموحدة</p>
-            <div class="flex justify-center gap-4 text-lg">
-                <a href="#" class="hover:text-blue-500 transition"><i class="fa-brands fa-facebook"></i></a>
-                <a href="#" class="hover:text-pink-500 transition"><i class="fa-brands fa-instagram"></i></a>
-                <a href="#" class="hover:text-red-500 transition"><i class="fa-brands fa-youtube"></i></a>
-                <a href="#" class="hover:text-blue-400 transition"><i class="fa-brands fa-twitter"></i></a>
-                <a href="#" class="hover:text-green-500 transition"><i class="fa-brands fa-whatsapp"></i></a>
-            </div>
         </footer>
     </div>
 
 
+    <!-- ==================== STREAMING_CHUNK: Integrating Modals and Interactive Dialogs... ==================== -->
     <!-- ==================== ثالثاً: النوافذ المنبثقة التفاعلية (Modals) ==================== -->
 
     <!-- نافذة إشعار الإستبيان الإجباري المرفقة بـ DULMS -->
@@ -626,7 +626,7 @@
         </div>
     </div>
 
-    <!-- نافذة استعادة / تعديل إعدادات الحساب (Account Settings) -->
+    <!-- نافذة إعدادات الحساب (Account Settings) -->
     <div id="settings-modal" class="hidden fixed inset-0 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4 z-50">
         <div class="bg-white rounded-2xl p-6 max-w-sm w-full shadow-2xl text-center space-y-4">
             <div class="w-12 h-12 bg-blue-50 text-blue-600 rounded-full flex items-center justify-center text-2xl mx-auto">
@@ -658,7 +658,6 @@
                 <p class="text-slate-400 text-xs">Locked</p>
             </div>
 
-            <!-- حقل فك القفل -->
             <div class="space-y-3">
                 <div class="relative">
                     <input 
@@ -698,6 +697,7 @@
     </div>
 
 
+    <!-- ==================== STREAMING_CHUNK: Writing Application Interactivity & Logic... ==================== -->
     <!-- ==================== رابعاً: لغة البرمجة التفاعلية (JavaScript) ==================== -->
     <script>
         // دالة حماية إظهار وإخفاء كلمة المرور لشاشة الدخول
